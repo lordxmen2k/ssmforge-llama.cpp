@@ -163,6 +163,7 @@ enum llm_arch {
     LLM_ARCH_POCKETTTS,
     LLM_ARCH_MINIMAX_01,
     LLM_ARCH_HRM_TEXT,
+    LLM_ARCH_SSMFORGE,  // SSMForge hybrid SSM/attention (https://github.com/lordxmen2k/SSMForge)
     LLM_ARCH_UNKNOWN,
 };
 
