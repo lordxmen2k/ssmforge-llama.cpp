@@ -944,6 +944,18 @@ struct llama_model_mamba2 : public llama_model_base {
     std::unique_ptr<llm_graph_context> build_arch_graph(const llm_graph_params & params) const override;
 };
 
+// SSMForge hybrid model (https://github.com/lordxmen2k/SSMForge).
+// Supports quantization (llama-quantize) but the forward-graph is currently
+// a stub. Full forward-pass support requires the SSM2 chunked SSD kernel,
+// tracked in the ssmforge repo docs/superpowers/plans/2026-09-21-vendor-llama-cpp.md.
+struct llama_model_ssmforge : public llama_model_base {
+    llama_model_ssmforge(const struct llama_model_params & params) : llama_model_base(params) {}
+    void load_arch_hparams(llama_model_loader & ml) override;
+    void load_arch_tensors(llama_model_loader & ml) override;
+
+    std::unique_ptr<llm_graph_context> build_arch_graph(const llm_graph_params & params) const override;
+};
+
 
 struct llama_model_maple : public llama_model_base {
     llama_model_maple(const struct llama_model_params & params) : llama_model_base(params) {}
